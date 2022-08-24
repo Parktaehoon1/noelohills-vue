@@ -1,7 +1,8 @@
 <template>
   <div>
   <section class="visual">
-    <Swiper :modules="modules" :autoplay="{
+    <Swiper :modules="modules" 
+            :autoplay="{
             delay: 2000,
             disableOnIteraction: false
             }" :loop="true" @swiper="onSwiper" @slideChange="onSlideChange" class="sw-visual">
@@ -36,7 +37,6 @@
   } from 'swiper/vue';
   import 'swiper/css';
   import VisualList from '@/components/VisualList.vue'
-import VisualList from './VisualList.vue';
 
   export default {
 
@@ -75,7 +75,7 @@ import VisualList from './VisualList.vue';
           vtxt: "국내 최초 100% <br/> 식품 그레이드 성분",
           vbtn: "SHOP",
         }
-      ]
+      ];
       const onSwiper = (swiper) => {
         console.log(swiper)
       };
