@@ -9,7 +9,7 @@
       </div>
       <div class="mb-wrap">
         <ul class="mb-menu">
-          <li v-for="(item, index) in mbmenu" v-bind:key="index">
+          <li v-for="(item, index) in mbMenuData" v-bind:key="index">
             <span class="mb-mainmenu" v-if="item.menuType === 'S'">{{item.mainText}}</span>
             <a :href="item.mainLink" class="mb-mainmenu" v-if="item.menuType === 'A'" v-on:click.prevent v-on:click.stop>{{item.mainText}}</a>
             
@@ -19,11 +19,6 @@
               </li>
             </ul>
           </li>
-          
-          
-          
-          
-
         </ul>
       </div>
     </div>
@@ -31,15 +26,22 @@
 </template>
 
 <script>
-  import {
-    onMounted
-  } from 'vue';
   import $ from 'jquery';
+  import { onMounted, computed } from 'vue';
+  // import { onMounted, ref } from 'vue';
+	import { useStore } from 'vuex';
 
   export default {
-    props: ['mbmenu'],
     setup() {
-      // 화면에 html 의 구성이 완료되면 
+      const store = useStore();
+      // const mbMenuData = ref([]);
+      // mbMenuData.value = store.state.mbMenuData;
+
+      const mbMenuData = computed(()=>store.getters.getmbMenuData) // {} 리턴 꼭 신경쓰기
+      // 화살표 함수로 해야 위의 store와의 범위가 같아짐
+
+      console.log("mbMenuData", mbMenuData)
+// 화면에 html 의 구성이 완료되면 
       onMounted(() => {
         // 모바일메뉴
         let mb_div = $('.mb-div')
@@ -103,7 +105,7 @@
         });
       });
       return {
-
+          mbMenuData
       }
     }
   }
