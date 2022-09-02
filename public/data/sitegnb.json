@@ -1,0 +1,105 @@
+[
+    {   
+        "titleType":"S",
+        "titleurl":"#",
+        "title":"SHOP",
+        "subarr": [
+            {
+            "suburl":"#",
+            "subtitle":"ALL PRODUCTS"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"NEWBORN"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"BABY"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"FAMILY"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"BATH GOODS"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"PRESENTS"
+            }]
+    },
+    {
+        "titleType":"S",
+        "titleurl":"#",
+        "title":"ABOUT",
+        "subarr": [
+            {
+            "suburl":"#",
+            "subtitle":"BRAND STORY"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"WHO WE ARE"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"MAKE A WISH"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"PRESS"
+        }]
+    },
+    {
+        "titleType":"S",
+        "titleurl":"#",
+        "title":"TRUST",
+        "subarr": [
+            {
+            "suburl":"#",
+            "subtitle":"FOOD GRADE"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"PENTACERA<sup>TM</sup>"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"BABY SKINCARE"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"CERTIFICATIONS"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"INGREDIENT"
+        }]
+    },
+    {
+        "titleType":"A",
+        "titleurl":"#",
+        "title":"STOCKISTS"
+    },
+    {
+        "titleType":"A",
+        "titleurl":"#",
+        "title":"REVIEW"
+    },
+    {
+        "titleType":"S",
+        "titleurl":"#",
+        "title":"BENEFITS",
+        "subarr": [
+            {
+            "suburl":"#",
+            "subtitle":"EVENTS"
+        },
+            {
+            "suburl":"#",
+            "subtitle":"MEMBERS"
+        }]
+    }
+
+]

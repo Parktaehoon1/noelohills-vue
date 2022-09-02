@@ -16,51 +16,20 @@
 
           <a href="#" class="logo"></a>
           <div class="gnb">
+
             <ul class="menu clearfix">
-              <li>
-                <a href="#">SHOP</a>
-                <ul class="submenu">
-                  <li><a href="#">ALL PRODUCTS</a></li>
-                  <li><a href="#">NEWBORN</a></li>
-                  <li><a href="#">BABY</a></li>
-                  <li><a href="#">FAMILY</a></li>
-                  <li><a href="#">BATH GOODS</a></li>
-                  <li><a href="#">PRESENTS</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">ABOUT</a>
-                <ul class="submenu">
-                  <li><a href="#">BRAND STORY</a></li>
-                  <li><a href="#">WHO WE ARE</a></li>
-                  <li><a href="#">MAKE A WISH</a></li>
-                  <li><a href="#">PRESS</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">TRUST</a>
-                <ul class="submenu">
-                  <li><a href="#">FOOD GRADE</a></li>
-                  <li><a href="#">PENTACERA<sup>TM</sup></a></li>
-                  <li><a href="#">BABY SKINCARE</a></li>
-                  <li><a href="#">CERTIFICATIONS</a></li>
-                  <li><a href="#">INGREDIENT</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">STOCKISTS</a>
-              </li>
-              <li>
-                <a href="#">REVIEW</a>
-              </li>
-              <li>
-                <a href="#">BENEFITS</a>
-                <ul class="submenu">
-                  <li><a href="#">EVENTS</a></li>
-                  <li><a href="#">MEMBERS</a></li>
+
+              <li v-for="(item,index) in siteMapData" :key="index">
+                <a :href="item.titleurl" v-on:click.prevent
+                  v-on:click.stop>{{item.title}}</a>
+                <ul class="submenu" v-if="item.titleType === 'S'">
+                  <li v-for="(subitem, subindex) in item.subarr" :key="subindex">
+                    <a :href="subitem.suburl" v-on:click.prevent v-on:click.stop v-html="subitem.subtitle"></a>
+                  </li>
                 </ul>
               </li>
             </ul>
+
           </div>
           <div class="member">
             <ul class="member-list clearfix">
@@ -128,7 +97,13 @@
 </template>
 
 <script>
-  import { onMounted } from 'vue';
+  import {
+    onUpdated,
+    computed
+  } from 'vue';
+  import {
+    useStore
+  } from 'vuex';
   import $ from 'jquery';
   import MbDiv from '@/components/MbDiv.vue';
   import Banner from '@/components/BannerView.vue';
@@ -147,7 +122,11 @@
       Sitemap,
     },
     setup() {
-      onMounted(() => {
+      const store = useStore()
+      const siteMapData = computed( () => store.getters.getsiteMenuData)
+      store.dispatch('fetchSiteGnbData');
+
+      onUpdated(() => {
         // 스크롤시 header 고정
         let header = $('.header');
         let wrap = $('.wrap');
@@ -168,6 +147,7 @@
 
       });
       return {
+        siteMapData
       }
     }
   }

@@ -27,7 +27,7 @@
 
 <script>
   import $ from 'jquery';
-  import { onMounted, computed } from 'vue';
+  import { onUpdated, computed } from 'vue';
   // import { onMounted, ref } from 'vue';
 	import { useStore } from 'vuex';
 
@@ -36,13 +36,13 @@
       const store = useStore();
       // const mbMenuData = ref([]);
       // mbMenuData.value = store.state.mbMenuData;
-
       const mbMenuData = computed(()=>store.getters.getmbMenuData) // {} 리턴 꼭 신경쓰기
       // 화살표 함수로 해야 위의 store와의 범위가 같아짐
+      store.dispatch('fetchmbMenuData');
 
       console.log("mbMenuData", mbMenuData)
 // 화면에 html 의 구성이 완료되면 
-      onMounted(() => {
+      onUpdated(() => {
         // 모바일메뉴
         let mb_div = $('.mb-div')
         // 모바일 보기 버튼 기능
