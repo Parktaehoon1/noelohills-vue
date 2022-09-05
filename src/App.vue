@@ -19,7 +19,6 @@
           <div class="gnb">
 
             <ul class="menu clearfix">
-
               <li v-for="(item,index) in siteMapData" :key="index">
                 <a :href="item.titleurl" v-on:click.prevent
                   v-on:click.stop>{{item.title}}</a>
@@ -125,7 +124,7 @@
       Sitemap,
     },
     setup() {
-      const store = useStore()
+      const store = useStore();
       const siteMapData = computed( () => store.getters.getsiteMenuData)
       store.dispatch('fetchSiteGnbData');
 
