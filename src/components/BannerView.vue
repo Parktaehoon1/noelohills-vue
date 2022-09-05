@@ -1,20 +1,29 @@
 <template>
   <!-- 배너영역 -->
   <div class="banner">
-    <div class="swiper-container sw-banner">
-      <!-- 슬라이드 내용  -->
-      <div class="swiper-wrapper">
+    <Swiper :modules="modules" 
+            :autoplay="{
+            delay: 2000,
+            disableOnIteraction: false
+            }" 
+            :loop="true" 
+            :pagination= "{
+              el: '.sw-banner-pg'
+            }"
+            effect="fade"
+            class="sw-banner">
 
-        <div class="swiper-slide">
+        <SwiperSlide class="swiper-slide">
           <a href="#" class="banner-1"></a>
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+
+        <SwiperSlide class="swiper-slide">
           <a href="#" class="banner-2"></a>
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+
+        <SwiperSlide class="swiper-slide">
           <a href="#" class="banner-3"></a>
-        </div>
-      </div>
+        </SwiperSlide>
 
       <!-- 슬라이드 컨트롤 -->
       <div class="sw-banner-control">
@@ -22,24 +31,35 @@
         <div class="sw-banner-pg"></div>
       </div>
 
-    </div>
+    </Swiper>
+
     <button class="banner-close"></button>
   </div>
 </template>
 
 <script>
-  import { onMounted, ref } from 'vue';
+  import { onUpdated, ref } from 'vue';
   import $ from 'jquery';
-
+  import { Autoplay, Pagination, EffectFade } from 'swiper';
+  import {
+    Swiper,
+    SwiperSlide
+  } from 'swiper/vue';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import "swiper/css/effect-fade";
   export default {
-
+    components: {
+      Swiper,
+      SwiperSlide
+    },
     setup() {
-      onMounted(() => {
+      onUpdated(() => {
         let fixY = ref(0);
         fixY.value = $('.banner').height();
         let banner_close = $('.banner-close');
 
-        banner_close.click( () => {
+        banner_close.click(() => {
           // 배너가 보여지지 않으므로 값을 제거
           fixY.value = 0;
           $('.banner').slideUp(300);
@@ -47,7 +67,7 @@
 
       });
       return {
-
+        modules: [Autoplay, Pagination, EffectFade],
       }
     }
   }

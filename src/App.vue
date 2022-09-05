@@ -1,13 +1,10 @@
 <template>
   <div>
-
     <ModalView />
     <!-- 모바일 메뉴 -->
     <MbDiv />
-
     <!-- 배너 -->
     <Banner />
-
     <div class="wrap">
       <!-- 상단 -->
       <header class="header">
@@ -20,8 +17,7 @@
 
             <ul class="menu clearfix">
               <li v-for="(item,index) in siteMapData" :key="index">
-                <a :href="item.titleurl" v-on:click.prevent
-                  v-on:click.stop>{{item.title}}</a>
+                <a :href="item.titleurl" v-on:click.prevent v-on:click.stop>{{item.title}}</a>
                 <ul class="submenu" v-if="item.titleType === 'S'">
                   <li v-for="(subitem, subindex) in item.subarr" :key="subindex">
                     <a :href="subitem.suburl" v-on:click.prevent v-on:click.stop v-html="subitem.subtitle"></a>
@@ -125,7 +121,7 @@
     },
     setup() {
       const store = useStore();
-      const siteMapData = computed( () => store.getters.getsiteMenuData)
+      const siteMapData = computed(() => store.getters.getsiteMenuData)
       store.dispatch('fetchSiteGnbData');
 
       onUpdated(() => {
