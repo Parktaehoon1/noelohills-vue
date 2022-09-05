@@ -1,41 +1,45 @@
 <template>
   <div>
-  <section class="visual">
-    <Swiper :modules="modules" 
-            :autoplay="{
+    <section class="visual">
+      <Swiper :modules="modules" :autoplay="{
             delay: 2000,
             disableOnIteraction: false
-            }" :loop="true" @swiper="onSwiper" @slideChange="onSlideChange" class="sw-visual">
+            }" :loop="true"   
+            :pagination= "{
+              el: '.sw-visual-pg'
+            }" 
+            @swiper="onSwiper" @slideChange="onSlideChange" class="sw-visual">
 
 
-      <swiper-slide class="swiper-slide" v-for="(item, index) in slideData" v-bind:key="index">
-        <VisualList 
-        :vtxt='item.vtxt' 
-        :vlink='item.vlink' 
-        :vimg='item.vimg' 
-        :vtitle='item.vtitle' 
-        :vbt="item.vbtn" />
-      </swiper-slide>
+        <swiper-slide class="swiper-slide" v-for="(item, index) in slideData" v-bind:key="index">
+          <VisualList :vtxt='item.vtxt' :vlink='item.vlink' :vimg='item.vimg' :vtitle='item.vtitle' :vbt="item.vbtn"
+           />
+        </swiper-slide>
 
-    </Swiper>
+        <div class="sw-visual-control">
+          <div class="sw-visual-pg"></div>
+        </div>
 
-  </section>
-</div>
+      </Swiper>
+
+    </section>
+  </div>
 </template>
 
 <script>
   import {
     ref
-    
+
   } from 'vue';
   import {
-    Autoplay
+    Autoplay, Pagination
   } from 'swiper';
   import {
     Swiper,
     SwiperSlide
   } from 'swiper/vue';
   import 'swiper/css';
+  import 'swiper/css/pagination';
   import VisualList from '@/components/VisualList.vue'
 
   export default {
@@ -85,7 +89,7 @@
       return {
         onSwiper,
         onSlideChange,
-        modules: [Autoplay],
+        modules: [Autoplay, Pagination],
         slideData,
 
       }
