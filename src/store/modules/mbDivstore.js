@@ -31,7 +31,6 @@ const mutations = {
 const getters = {
             getmbMenuData(state){ // 무조건 state 
               // 여러가지 데이터를 원하는 값으로 정렬
-                console.log('?', state) // 데이터넘어옴
                 return state.mbMenuData;
               },
               getsiteMenuData(state){
