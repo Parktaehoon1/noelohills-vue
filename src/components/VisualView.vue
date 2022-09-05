@@ -6,7 +6,8 @@
             disableOnIteraction: false
             }" :loop="true"   
             :pagination= "{
-              el: '.sw-visual-pg'
+              el: '.sw-visual-pg',
+              clickable: 'true'
             }" 
             @swiper="onSwiper" @slideChange="onSlideChange" class="sw-visual">
 
