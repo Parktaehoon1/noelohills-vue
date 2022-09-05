@@ -1,6 +1,7 @@
 <template>
   <div>
 
+    <ModalView />
     <!-- 모바일 메뉴 -->
     <MbDiv />
 
@@ -105,6 +106,7 @@
     useStore
   } from 'vuex';
   import $ from 'jquery';
+  import ModalView from '@/components/ModalView.vue'
   import MbDiv from '@/components/MbDiv.vue';
   import Banner from '@/components/BannerView.vue';
   import Visual from '@/components/VisualView.vue';
@@ -115,6 +117,7 @@
   export default {
     name: 'App',
     components: {
+      ModalView,
       MbDiv,
       Banner,
       Visual,
